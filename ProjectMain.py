@@ -1,9 +1,16 @@
+
+############################## IMPORTS ##############################
+
+
 import numpy as np
 from ProjectModule import *
 from lagrossebertha.plotting import plot as custom_plot
 from lagrossebertha.schrodinger import mat_trans
-import matplotlib.pyplot as plt
 import matplotlib.patches as patches
+
+
+
+############################## FUNCTIONS ##############################
 
 
 def Q2(N :int, d :float, V0 :float, Vapp :float):
@@ -133,16 +140,10 @@ def Q_BONUS_sine(Ssigma :float, V0 :float, Vapp :float, z0 :float, R0 :float, xm
         return z0 + amplitude*np.sin(pulsation*x)
 
     I_1D_2D_curved_domain(Ssigma, V0, Vapp, z_sine, R0, xmax, z0, nopt)
-    
 
-def Q_BONUS_blocs(Ssigma :float, V0 :float, Vapp :float, z0 :float, R0 :float, xmax :float, amplitude :float, pulsation :float, nopt :int =12):
-    print("############################## Q_SINE ##############################")
-    
-    def z_blocs(x):
-        return z0 + amplitude*(((pulsation*x)//1)%2)
 
-    I_1D_2D_curved_domain(Ssigma, V0, Vapp, z_blocs, R0, xmax, z0, nopt)
-    
+
+############################## MAIN ##############################
 
 if __name__ == "__main__":
-    Q2(12, 0.5e-9, 5, 2)
+    Q6(1, 3, 2, 0.5e-9, 0.5e-9, 5e-9)

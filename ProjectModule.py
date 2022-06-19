@@ -2,6 +2,7 @@ import numpy as np
 from lagrossebertha.schrodinger import *
 from lagrossebertha.plotting import plot as custom_plot
 import time
+from alive_progress import alive_bar
 
 
 ############################## Q2 ##############################
@@ -77,10 +78,7 @@ def current_2D_unscaled_disk(x0, z, R0, Vapp, V0, Ssigma, nopt):
     x = np.linspace(-R0, R0, 100)
     zt = [z(x0+xx) + R0 - np.sqrt(R0**2 - xx**2) for xx in x]
     
-    I=[]
-    
-    for zz in zt:
-        I.append(current_1D(zz, Vapp, V0, Ssigma, nopt))
+    I = [current_1D(zz, Vapp, V0, Ssigma, nopt) for zz in zt]
     
     I2D = np.sum(I)*2*R0/100
     
@@ -111,7 +109,13 @@ def I_1D_2D_curved_domain(Ssigma, V0, Vapp, z :Callable, R0, xmax, z0, nopt) -> 
     I1D = I2D = []
     
     I1D = [current_1D(zz, Vapp, V0, Ssigma, nopt) for zz in zDom1]
-    I2D = 1/np.sqrt(S)*np.array([current_2D_unscaled_disk(x, z, R0, Vapp, V0, Ssigma, nopt) for x in xDom2])
+    
+    with alive_bar(len(xDom2), title="Progression de la pointe circulaire") as update_bar:
+        for x in xDom2:
+            update_bar()
+            I2D.append(current_2D_unscaled_disk(x, z, R0, Vapp, V0, Ssigma, nopt))
+        
+    I2D = 1/np.sqrt(S) * np.array(I2D)
         
     custom_plot(np.array(xDom1)*1e9, (np.array(I1D)*1e6, "", "Pointe parfaite"), xlabel=r"Position [nm]", ylabel= r"Intensité du courant électrique [$\mu$A]")
     custom_plot(np.array(xDom2)*1e9, (np.array(I2D)*1e6, "", "Profil circulaire"))
