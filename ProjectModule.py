@@ -8,8 +8,8 @@ import time
 
 
 def trapezoid_rect(N, d, V0, Vapp):
-    V_tab=[0]
-    X_tab=[]
+    V_tab = [0]
+    X_tab = []
     
     for i in range(N):
         V_tab.append(V0+(N-i)*Vapp/N)

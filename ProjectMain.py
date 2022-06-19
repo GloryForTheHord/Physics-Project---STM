@@ -14,8 +14,6 @@ def Q2(N :int, d :float, V0 :float, Vapp :float):
     
     xTab, vTab = trapezoid_rect(N, d, V0, Vapp)
     
-    print(xTab, len(xTab), vTab, len(vTab))
-    
     xCoord = [0, 0, d, d]
     yCoord = [0, V0+Vapp, V0, 0]
     
@@ -29,12 +27,17 @@ def Q2(N :int, d :float, V0 :float, Vapp :float):
     for i in range(N+1):
         xCoord.append(xTab[i])
         xCoord.append(xTab[i])
+        xCoord.append(xTab[i])
         yCoord.append(vTab[i])
+        yCoord.append(0)
         yCoord.append(vTab[i+1])        
     
     approx = patches.Polygon(list(zip(xCoord, yCoord)), linewidth=1.5, label="Approximation", fill=False, color="orange")
     
     ax.add_patch(approx)
+    
+    ax.axes.xaxis.set_visible(False)
+    ax.axes.yaxis.set_visible(False)
     
     plt.legend(loc="best")
     plt.show()
