@@ -7,7 +7,7 @@ from scipy.sparse import diags
 from findiff import FinDiff
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.signal import argrelextrema, argrelmax
+from scipy.signal import argrelextrema
 
 
 

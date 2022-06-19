@@ -3,8 +3,8 @@
 
 
 import numpy as np
-from lagrossebertha.schrodinger import *
-from lagrossebertha.plotting import plot as custom_plot
+from packages.schrodinger import *
+from packages.plotting import plot as custom_plot
 import time
 from alive_progress import alive_bar    #* Since Q6 take a consequent time to execute, a progress bar is provided
 

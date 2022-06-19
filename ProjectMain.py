@@ -4,8 +4,8 @@
 
 import numpy as np
 from ProjectModule import *
-from lagrossebertha.plotting import plot as custom_plot
-from lagrossebertha.schrodinger import mat_trans
+from packages.plotting import plot as custom_plot
+from packages.schrodinger import mat_trans
 import matplotlib.patches as patches
 
 
