@@ -1,6 +1,12 @@
+
+############################## IMPORTS ##############################
+
+
 import matplotlib.pyplot as plt
-import matplotlib.patches as patches
 import numpy as np
+
+
+############################## FUNCTIONS ##############################
 
 
 def plot(x :np.ndarray, *args :tuple, **kwargs):

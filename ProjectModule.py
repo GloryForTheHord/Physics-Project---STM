@@ -1,8 +1,13 @@
+
+############################## IMPORTS ##############################
+
+
 import numpy as np
 from lagrossebertha.schrodinger import *
 from lagrossebertha.plotting import plot as custom_plot
 import time
-from alive_progress import alive_bar
+from alive_progress import alive_bar    #* Since Q6 take a consequent time to execute, a progress bar is provided
+
 
 
 ############################## Q2 ##############################
@@ -96,7 +101,7 @@ def get_S(Ssigma :float, V0 :float, Vapp :float, z0 :float, R0 :float, nopt :int
     return (I2D/I1D)**2
 
 
-def I_1D_2D_curved_domain(Ssigma, V0, Vapp, z :Callable, R0, xmax, z0, nopt) -> None:
+def current_1D_2D_curved_domain(Ssigma, V0, Vapp, z :Callable, R0, xmax, z0, nopt) -> None:
     
     S = get_S(Ssigma, V0, Vapp, z0, R0, nopt)
     

@@ -130,7 +130,7 @@ def Q6(Ssigma :float, V0 :float, Vapp :float, z0 :float, R0 :float, xmax :float,
         else:
             return z0+0.25e-9
         
-    I_1D_2D_curved_domain(Ssigma, V0, Vapp, z_step, R0, xmax, z0, nopt)
+    current_1D_2D_curved_domain(Ssigma, V0, Vapp, z_step, R0, xmax, z0, nopt)
     
     
 def Q_BONUS_sine(Ssigma :float, V0 :float, Vapp :float, z0 :float, R0 :float, xmax :float, amplitude :float, pulsation :float, nopt :int =12):
@@ -139,11 +139,12 @@ def Q_BONUS_sine(Ssigma :float, V0 :float, Vapp :float, z0 :float, R0 :float, xm
     def z_sine(x):
         return z0 + amplitude*np.sin(pulsation*x)
 
-    I_1D_2D_curved_domain(Ssigma, V0, Vapp, z_sine, R0, xmax, z0, nopt)
+    current_1D_2D_curved_domain(Ssigma, V0, Vapp, z_sine, R0, xmax, z0, nopt)
 
 
 
 ############################## MAIN ##############################
 
 if __name__ == "__main__":
-    Q6(1, 3, 2, 0.5e-9, 0.5e-9, 5e-9)
+    #* ENTER INSTRUCTIONS HERE
+    pass
